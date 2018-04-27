@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+     <meta charset="utf-8">
+
+    <title>PLAYER</title>
+    <link rel="stylesheet" type="text/css" href="css/player.css">
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/utilities.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script src="js/jquery-ui-simulate.js"></script>
+    <script src="js/jquery.simulate.ext.js"></script>
+    <script src="js/jquery.simulate.drag-n-drop.js"></script>
+    <script src="js/jquery.ui.touch-punch.min.js"></script>
+    <script src="js/xml2json.js"></script>
+
+    <script src="https://www.youtube.com/iframe_api"></script>
+  </head>
+  <body id="player-body">
+    <!-- The video ID is rendered by the server itself -->
+    <div hidden id="vid-id"><%= params["vidId"] %></div>
+
+    <div id="player-video"></div>
+
+    <div id="control-surface">
+      <div style="text-align:center">
+        <h1>Select your first and second languages</h1>
+        <h2>I am learning <select id="l1-select" disabled></select> and I want support in <select id="l2-select" disabled></select>.
+        </h2>
+        <br>
+        <button id="l-select-button" disabled>OK</button>
+      </div>
+    </div>
+
+    <div id="subtitle-group">
+      <div id="subtitle-past"></div>
+      <div id="subtitle"></div>
+    </div>
+
+    <div id="definition"></div>
+
+    <div id="timeline-pane" class="menu">
+      <div id="timeline">
+        <div id="timeline-fill"></div>
+      </div>
+      <div id="timestamp"><span id="timestamp-content">00:00:00 [1x]</span></div>
+      <div id="duration">00:00:00</div>
+    </div>
+
+    <div id="play-button" class="menu button">
+      <img src="img/pause.png"/>
+    </div>
+
+    <div id="l1-button" class="menu button sub-button">
+    </div>
+    <div id="nosub-button" class="menu button sub-button active">
+      <img src="img/nosub.png"/>
+    </div>
+    <div id="l2-button" class="menu button sub-button">
+    </div>
+
+    <div id="rewindsub-button" class="menu button time-button">
+      <img src="img/rewind-sub-4.png"/>
+    </div>
+    <div id="rewind-button" class=" button time-button">
+      <img src="img/rewind.png"/>
+    </div>
+
+    <div id="pastsub-button" class="menu button disabled">
+      <img src="img/past-sub.png"/>
+    </div>
+
+    <div id="fullspeed-button" class="menu button active">
+      <img src="img/full-speed.png"/>
+    </div>
+
+    <div id="halfspeed-button" class="menu button">
+      <img src="img/half-speed.png"/>
+    </div>
+
+    <div id="fastforward-button" class=" button time-button">
+      <img src="img/fastforward.png"/>
+    </div>
+
+    <div id="fastforwardsub-button" class="menu button time-button">
+      <img src="img/fastforward-sub-4.png"/>
+    </div>
+
+    <div id="word-history"></div>
+    <div id="scrubbing-num"></div>
+
+    <script src="js/tracker.js"></script>
+    <script src="js/load-video.js"></script>
+    <script src="js/menu.js"></script>
+    <script src="js/subtitle.js"></script>
+  </body>
+</html>

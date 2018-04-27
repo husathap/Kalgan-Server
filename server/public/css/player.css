@@ -1,0 +1,249 @@
+body {
+  font-family: sans-serif;
+}
+
+#player-body {
+  overflow:hidden;
+  background-color: black;
+}
+
+#player-video {
+  width:100%;
+  height:100%;
+  position:absolute;
+  left:0;
+  top:0;
+}
+
+#control-surface {
+  width:100%;
+  height:100%;
+  position:absolute;
+  background-color:rgba(240, 240, 240, 0.8);
+  color:black;
+  z-index: 100;
+  top:0;
+  left:0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#timeline-pane {
+  height:100vh;
+  width: 5cm;
+  position:absolute;
+  left:0;
+  top:0;
+  display: block;
+  font-size: large;
+  z-index:109;
+  background: -moz-linear-gradient(left, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0) 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(left, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#00000000',GradientType=1 ); /* IE6-9 */
+}
+
+#timeline {
+  width:0.5cm;
+  height:100vh;
+  position:absolute;
+  left:0.5cm;
+  background-color: gray;
+  border:1px solid orange;
+  overflow: hidden;
+  cursor:pointer;
+}
+
+#timeline-fill {
+  width:100%;
+  position:absolute;
+  left:0;
+  top:0;
+  background-color:transparent;
+  border-bottom: white 5px solid;
+  overflow: hidden;
+}
+
+#timestamp-content {
+  color:white;
+}
+
+.timeline-flag {
+  width:80%;
+  height:0px;
+  margin:auto;
+  position:absolute;
+  background-color:transparent;
+  border: rgba(255, 0, 0, 0.2) 2px solid;
+}
+
+.word1 {
+  position:absolute;
+  left:1.5cm;
+  color:rgba(255, 192, 203, 0.6);
+  text-shadow: 0px 0px white;
+  text-overflow: ellipsis;
+}
+
+.word2 {
+  position:absolute;
+  left:1.5cm;
+  color:rgba(137, 207, 240, 0.6);
+  text-shadow: 0px 0px white;
+  text-overflow: ellipsis;
+}
+
+#timestamp {
+  color:white;
+  position:absolute;
+  left:1.1cm;
+  font-size: large;
+  text-shadow: 0px 0px 2px black;
+  z-index:200;
+}
+
+#duration {
+  color:white;
+  position:absolute;
+  left:1.1cm;
+  bottom:0cm;
+  font-size: large;
+}
+
+
+.menu.button {
+  width:1.1cm;
+  height:1.1cm;
+  background-color: rgba(0,0,0,0.8);
+  border: 1px solid white;
+  position:absolute;
+  z-index: 120;
+  cursor: pointer;
+}
+
+.menu.button:hover {
+  background-color: rgb(255,100,0);
+}
+
+.menu.button > img {
+  width:100%;
+  height:100%;
+}
+
+.menu.button.active {
+  background-color: rgb(255,100,100);
+}
+
+.sub-button {
+  color:white;
+  font-size: x-large;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family:monospace;
+}
+
+#scrubbing-num {
+  position:fixed;
+  font-size: x-large;
+  visibility:collapse;
+  background-color: rgb(255,100,100);
+  border: 1px solid white;
+  padding:0.25em;
+  z-index:104;
+  color:white;
+}
+
+#subtitle-group {
+  position:fixed;
+  width:100%;
+  left:0px;
+  bottom:0px;
+  min-height:150px;
+  height:auto;
+  background-color:black;
+  z-index: 104;
+}
+
+#subtitle {
+  position:relative;
+  margin:auto;
+  color:white;
+  text-align: center;
+  z-index: 200;
+  width: 80%;
+  max-width: 1000px;
+  word-wrap:break-word;
+  padding-top:0.25cm;
+  padding-bottom:1cm;
+}
+
+#subtitle-past {
+  position:relative;
+  margin:auto;
+  color:pink;
+  text-align: center;
+  z-index: 200;
+  width: 80%;
+  max-width: 1000px;
+  word-wrap:break-word;
+}
+
+#subtitle .subtitle-word {
+  color:white;
+  font-size: xx-large;
+}
+
+#subtitle .subtitle-word:hover {
+  color:yellow;
+}
+
+#subtitle-past .subtitle-word {
+  color:gray;
+  font-family: monospace;
+  font-size: x-large;
+}
+
+#subtitle-past .subtitle-word:hover {
+  color:yellow;
+}
+
+#definition {
+  position:fixed;
+  bottom:5cm;
+  color:black;
+  padding:0.5em;
+  background-color:rgba(255, 255, 0, 0.8);
+  font-size: x-large;
+  z-index:201;
+  margin:auto;
+  padding-right: 2cm;
+  cursor:pointer;
+  background-position: right center;
+  background-repeat: no-repeat;
+}
+
+#word-history {
+  position:absolute;
+  bottom:4cm;
+  right:1cm;
+  height:60%;
+  max-height:10cm;
+  width:7cm;
+  z-index: 103;
+  background-color: rgba(0, 0, 0, 0.8);
+  border: 1px solid white;
+  color:white;
+  font-size:large;
+  overflow-y: scroll;
+}
+
+#word-history > div {
+  border-bottom: white 1px solid;
+  padding:0.5em;
+}
+
+.disabled {
+  opacity: 0.5;
+}

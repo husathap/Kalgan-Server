@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Experimental System</title>
+
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-default" style="margin-bottom:0px;">
+      <div class="container">
+        <ul class="nav navbar-nav">
+          <li><a href="help" target="_blank" class="help"><span class="glyphicon glyphicon-question-sign"></span> Help</a></li>
+          <li><a href="consent.pdf" target="_blank"><span class="glyphicon glyphicon-ok"></span> Consent Form</a></li>
+          <li><a href="logout"><span class="glyphicon glyphicon-remove-circle"></span> Log Out</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="jumbotron" style="margin-top:0px">
+      <div class="container" style="font-size:large">
+        <h2>Welcome, <%= session["email"] %></h2>
+        <h3><span class="glyphicon glyphicon-time"></span> Interview appointment: <%= @interviewTime.asctime %> at MS680</h2>
+        <h3><span class="glyphicon glyphicon-exclamation-sign"></span> Check out <a href="help" target="_blank" class="help"><span class="glyphicon glyphicon-question-sign"></span> Help</a> for training materials, known issues and the investigator's email.</h3>
+      </div>
+
+    </div>
+
+    <div class="container">
+      <h1>Recommended Videos</h1>
+      <p>These videos are deemed to works well with our player and we recommend
+        them to you. Please note that we are not responsible for the content of
+        the video nor do we endorse any.
+      Start by selecting a language that you want to learn.</p>
+
+      <p>
+        <button class="btn btn-default" data-toggle="modal" data-target="#en-modal">English</button>
+        <button class="btn btn-default" data-toggle="modal" data-target="#fr-modal">French</button>
+      </p>
+
+      <h1>Custom Video</h1>
+      <p>While we recommend you to watch our recommended videos, you can also watch
+      your own content as well. In order to ensure that the video will function properly,
+      the video must have at least closed caption in 2 languages, and support embedding.
+      Please also turn off closed caption on the original video page.</p>
+      <p>
+        <input id="custom-video-text" type="text" placeholder="YouTube Video URL"></input>
+        <a id="custom-video-button" class="btn btn-default" target="_blank">Watch</a>
+      </p>
+
+      <h1>Bookmarklet (Advanced)</h1>
+
+      <p>For your convenience, we suggest that you install the bookmarklet by dragging the link and put it the bookmark bar:
+
+      <a href='javascript:void(location.href="https://server/player?vidId=" + location.search.slice(3,14))'>Special video system</a></p>
+
+      <p>If you cannot install the bookmarklet by dragging and dropping, please copy the code below when you are creating
+      a bookmarklet.</p>
+
+      <pre>javascript:void(location.href="https://server/player?vidId=" + location.search.slice(3,14))</pre>
+
+      <p>Once you have installed the bookmarklet, when you are on a YouTube video page, simply click on the bookmarklet to watch
+      it on the special video player.</p>
+    </div>
+
+    <!-- Where the Modal Things Are -->
+    <!-- English Modal -->
+    <div class="modal fade" id="en-modal" role="dialog">
+      <div class="modal-dialog">
+
+        <div class="modal-content">
+
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h2 class='modal-title'>English</h2>
+          </div>
+
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-md-6">
+                <h3>Crash Course</h3>
+                <ul class="nav nav-pills nav-stacked">
+                  <li><a href="player?vidId=0rHUDWjR5gg" target="_blank">Introduction to Astronomy: Crash Course Astronomy #1</a></li>
+                  <li><a href="player?vidId=wyzi9GNZFMU" target="_blank">Rethinking Civilization - Crash Course World History 201</a></li>
+                  <li><a href="player?vidId=3ez10ADR_gM" target="_blank">Intro to Economics: Crash Course Econ #1</a></li>
+                </ul>
+              </div>
+              <div class="col-md-6">
+                <h3>Jun's Kitchen</h3>
+                <ul class="nav nav-pills nav-stacked">
+                  <li><a href="player?vidId=9WXIrnWsaCo" target="_blank">Homemade Ramen</a></li>
+                  <li><a href="player?vidId=QIqMp-erjvg" target="_blank">Koi fish sushi コイ寿司</a></li>
+                  <li><a href="player?vidId=XPp6RrEGc5k" target="_blank">Sakura Tree Tempura</a></li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <h3>Ted Talks</h3>
+                <ul class="nav nav-pills nav-stacked">
+                  <li><a href="player?vidId=R1vskiVDwl4" target="_blank">10 ways to have a better conversation | Celeste Headlee</a></li>
+                  <li><a href="player?vidId=0OkOQhXhsIE" target="_blank">I'm 17 | Kate Simonds | TEDxBoise</a></li>
+                  <li><a href="player?vidId=F7Id9caYw-Y" target="_blank">What's wrong with our food system | Birke Baehr | TEDxNextGenerationAsheville</a></li>
+                </ul>
+              </div>
+              <div class="col-md-6">
+                <h3>Crazy Russian Hacker</h3>
+                <ul class="nav nav-pills nav-stacked">
+                  <li><a href="player?vidId=FfOTmfwRTFs" target="_blank">Testing Russian Military MRE (Meal Ready to Eat)</a></li>
+                  <li><a href="player?vidId=OoTZkfUbqNs" target="_blank">6 Potato Gadgets put to the Test</a></li>
+                  <li><a href="player?vidId=mTbXYWfrmBw" target="_blank">7 Glove Gadgets Put to the Test</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- French Modal -->
+    <div class="modal fade" id="fr-modal" role="dialog">
+      <div class="modal-dialog">
+
+        <div class="modal-content">
+
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h2 class='modal-title'>French</h2>
+          </div>
+
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-md-6">
+                <h3>L'Histoire racontée par des Chaussettes</h3>
+                <ul class="nav nav-pills nav-stacked">
+                  <li><a href="player?vidId=lUuncjDTSKI" target="_blank">Jeanne d'Arc</a></li>
+                  <li><a href="player?vidId=Ks5l0zFgne4" target="_blank">l'invention des Pokemon</a></li>
+                  <li><a href="player?vidId=p-WljKMGMLw" target="_blank">l'invention de la télécommande</a></li>
+                </ul>
+              </div>
+              <div class="col-md-6">
+                <h3>Ted Talks</h3>
+                <ul class="nav nav-pills nav-stacked">
+                  <li><a href="player?vidId=oN5tdMSXWV8" target="_blank">Etienne Chouard - Chercher la cause des causes - TEDxRepubliquesquare</a></li>
+                  <li><a href="player?vidId=5ovh-Ux_zRs" target="_blank">Mais comment font-ils pour apprendre une langue? Sharon Peperkamp at TEDxVaugirardRoad 2013</a></li>
+                  <li><a href="player?vidId=uBLH5aw1Ves" target="_blank">Serious games - Faites vos jeux: Hélène Michel at TEDxIsereRiver</a></li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <h3>Cyprien</h3>
+                <ul class="nav nav-pills nav-stacked">
+                  <li><a href="player?vidId=bhK4UkmzAVA" target="_blank">Drawing</a></li>
+                  <li><a href="player?vidId=_rFb77GgN8Q" target="_blank">Being a YouTuber</a></li>
+                  <li><a href="player?vidId=RL7grUEo960" target="_blank">School</a></li>
+                </ul>
+              </div>
+              <div class="col-md-6">
+                <h3>Monde des Titounis (For Children)</h3>
+                <ul class="nav nav-pills nav-stacked">
+                  <li><a href="player?vidId=zjnx_Du41Ao" target="_blank">Méli et Touni - La chanson des véhicules pour les enfants - Titounis</a></li>
+                  <li><a href="player?vidId=J5xaUO5-eio" target="_blank">Méli et Touni - La chanson du toboggan pour les enfants - Titounis</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="training-modal" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h2 class='modal-title'>First-Time Training</h2>
+          </div>
+          <div class="modal-body">
+            <p>It seems that this is your first time logging into the system. If
+            that is the case, please watch the video below. Otherwise, please ignore
+            and close this window.</p>
+            <br/>
+            <!--<iframe width="560" height="315" src="https://www.youtube.com/embed/bVieOytwNCg" frameborder="0" allowfullscreen></iframe>-->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+    if (!localStorage.trained) {
+      localStorage.trained = true;
+      $("#training-modal").modal();
+    }
+
+    $("#training-modal").on('hidden.bs.modal', function() {
+      $(this).remove();
+    })
+
+    $("#custom-video-text").change(function() {
+      // Code adopted from: http://stackoverflow.com/questions/3452546/javascript-regex-how-to-get-youtube-video-id-from-url
+
+      var vidId = $(this).val().split('v=')[1];
+      var ampersandPosition = vidId.indexOf('&');
+      if(ampersandPosition != -1) {
+        vidId = vidId.substring(0, ampersandPosition);
+      }
+      $("#custom-video-button").attr("href", "player?vidId=" + vidId);
+    })
+    </script>
+  </body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+    <title>Video Study Log In</title>
+  </head>
+
+  <body>
+
+    <div class="jumbotron">
+      <div class="container">
+        <h1>Experiment Video System</h1>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <h3><span class="glyphicon glyphicon-envelope"></span> Contact Investigator: vid.uofc@gmail.com</h3>
+        <p>If you forget your password, or notice any technical bug, please contact the investigator.</p>
+      <h3><span class="glyphicon glyphicon-star"></span> New to the study? <a href="/signup">Sign Up Here</a></h3>
+      <h3><span class="glyphicon glyphicon-log-in"></span> Already signed up? Logged out? Please sign in.</h3>
+      <br><br>
+      <div class="panel panel-default">
+        <div class="panel-heading">Sign In</div>
+        <div class="panel-body">
+          <p>The system will stay logged in unless you sign out or you are using
+          the private mode in the browser.</p>
+
+          <form method="POST" action="login">
+            Email: <input type="email" name="email"></input><br>
+            Token: <input type="password" name="token"></input><br><br>
+            <input type="submit"></input>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+<html>

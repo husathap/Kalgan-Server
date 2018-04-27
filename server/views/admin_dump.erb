@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Admin</title>
+    <script src="/js/jquery-3.1.1.min.js"></script>
+
+    <style>
+    td {
+      border: black 1px solid;
+      padding: 1em;
+    }
+    </style>
+  </head>
+
+  <body>
+    <h1>Admin Page (DATA DUMP)</h1>
+
+    <div id="login">
+      <h2>Log In</h2>
+      <p>Username: <input type="text" id="username"></text></p>
+      <p>Password: <input type="password" id="password"></text></p>
+      <button id="submit">Submit</button>
+    </div>
+
+    <p id="content">
+
+    </p>
+  </body>
+
+  <script>
+  // Dealing when the user click.
+  $("#submit").click(function() {
+    $.post({ url: "admin_login",
+      data: JSON.stringify({"username": $("#username").val(), "password": $("#password").val(), "task": "log"}),
+      dataType: 'json',
+      contentType: 'application/json; charset=utf-8',
+      success: function(d) {
+        if (d.status == "unauthorized") {
+          $("#content").html("Wrong credential.");
+        } else if (d.status == "authorized") {
+          $("#login").html("");
+          $("#content").html("<a href='dump_data'>Get data here</a>")
+        } else {
+          $("#content").html("Received a weird response.");
+        }
+      }
+    });
+  });
+  </script>
+<html>

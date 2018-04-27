@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Consent and Signing Up</title>
+
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/flatpickr.css">
+
+    <script src="/js/jquery-3.1.1.min.js"></script>
+    <script src="js/flatpickr.js"></script>
+  </head>
+
+  <body>
+    <div class="jumbotron">
+      <div class="container">
+        <h2>Consent and Sign Up Form</h2>
+        <div class="row">
+          <div class="col-md-2 hidden-md-down">
+            <img src="img/uofc.png" alt="Universisty of Calgary Logo"/>
+          </div>
+          <div class="col-sm-10">
+            <h4>Name of Researcher, Faculty, Department, Telephone and Email:</h4>
+            <p style="font-size: medium">OMITTED</p>
+            <h4>Supervisor</h4>
+            <p style="font-size: medium">OMITTED</p>
+            <h4>Title of the Project:</h4>
+            <p style="font-size: medium">Enhanced Video Player for Language Learning</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <p> OMITTED
+      </p>
+
+      <div class="panel panel-default">
+        <div class="panel-heading">Sign Up</div>
+        <div id="signup" class="panel-body">
+          Email: <input type="email" id="email"></input><br/>
+          Interview Date: <input class="flatpickr" type="text" placeholder="Select date and time" id="date"></input><br/>
+          Interview Time:
+          <select id="time">
+            <option id="nine-am">9:00 AM</option>
+            <option id="ten-am">10:00 AM</option>
+            <option id="eleven-am">11:00 AM</option>
+            <option id="twelve-pm">12:00 PM</option>
+            <option id="one-pm">1:00 PM</option>
+            <option id="two-pm">2:00 PM</option>
+            <option id="three-pm">3:00 PM</option>
+            <option id="four-pm">4:00 PM</option>
+            <option id="four-pm">5:00 PM</option>
+            <option id="four-pm">6:00 PM</option>
+          </select><br/>
+          <button id="confirm" class="btn btn-default">Consent</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+    flatpickr(".flatpickr", {
+      minDate: new Date().fp_incr(7),
+      maxDate: '2017-06-16',
+      disable: [
+        function(date) { // disable weekends
+          return date.getDay() == 0 || date.getDay() == 6;
+        },
+      ]
+    });
+
+    $("#confirm").click(function() {
+
+      $.post({
+        url: "consent",
+        data: JSON.stringify({time: $("#date").val() + " " + $("#time").val(), email: $("#email").val(), consent:$("#consent").val()}),
+        dataType: 'json',
+        contentType: 'application/json; charset=utf-8',
+        success: function(d) {
+          if (d.result == "success") {
+            //alert("You are now enrolled in the study. Your activation password is " + d.token +".\n\nPlease record it. You will need it if you clear your browser history.");
+
+            $(".panel.panel-default").append("<div class='panel-body' id='login-info'></div>")
+            $("#login-info").append("<p>Signing up successful. Please record your log in. You will need them to log in if you get logged out:<br>- Username: " + $("#email").val() + "<br>- Password: " + d.token + "</p>");
+            $("#login-info").append("<a href='/main' class='btn btn-default'>Start</a>");
+
+            $("#signup").remove();
+            //window.location.href = "/main";
+          } else {
+            alert("ERROR: " + d.message);
+          }
+        }
+      })
+    });
+    </script>
+  </body>
+</html>
